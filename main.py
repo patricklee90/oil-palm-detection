@@ -104,10 +104,10 @@ def main(image_path, args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Source code for ACCV project")
-    parser.add_argument("image_dir", type=str,
+    parser.add_argument("--image_dir", type=str,
                         help="enter root dir of input images")
-    parser.add_argument("mat_dir", type=str,
-                        help="enter root directory of GVF or GGVF images")
+#     parser.add_argument("mat_dir", type=str,
+#                         help="enter root directory of GVF or GGVF images")
     parser.add_argument("--gvf_angle_thresh", type=float, default=5.,
                         help="Angle (in Degrees) threshold for GVF Symmetry")
     parser.add_argument("--CCA_size_thresh", type=float, default=10,
@@ -127,6 +127,9 @@ if __name__ == "__main__":
     args = parser.parse_args()
     
     image_path_list = glob.glob(os.path.join(args.image_dir, "*"))
+    print(f'args.image_dir: {args.image_dir}')
+    print(f'image_path_list: {image_path_list}')
     
     for image_path in image_path_list[0:]:
+        print(f'image_path: {image_path}')
         main(image_path, args)
